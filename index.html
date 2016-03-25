@@ -7,6 +7,10 @@
     <script type="text/javascript" src="script/script.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
 
+    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
     <meta charset="UTF-8">
   </head>
   <body>
@@ -15,15 +19,15 @@
           <legend><span class="number">1</span>Information nécéssaire</legend>
           <label>entrer une commune</label>
           <input id="commune" type="text" name="commune">
-          <label>Nombre d'image souhaités</label><select id="listNumber"></select>
         </fieldset>
         <fieldset>
           <legend><span class="number">2</span>Information complémentaire</legend>
-           <label>Photos prisent à partir d'une date : </label> <input type="checkbox" id="checkbox1"/>
+          <label>Nombre d'image souhaités</label><select id="listNumber"></select>
+        </fieldset>
+        <fieldset>
+           <input type="checkbox" id="checkbox1" value="interest_design" name="user_interest"><label class="light" for="checkbox1">Photos prisent à partir d'une date</label>
             <div id="autoUpdate" class="autoUpdate">
              <label> Date:</label>  <br/><input type="text" id="datepicker">
-
-
             </div>
         </fieldset>
       <button id="button" >Envoyer</button>
@@ -49,5 +53,12 @@
     <div id="dialog-noResult" title="Fenêtre d'information"> Aucun résultat trouvé pour la recherche</div>
     <div id="dialog-infoPhoto" title="Fenêtre d'information"> Aucun résultat trouvé pour la recherche</div>
 
+
+
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		$(".fancybox").fancybox();
+    	});
+    </script>
   </body>
 </html>

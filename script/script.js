@@ -101,6 +101,7 @@ $(function(){
           var img = $("<img/>");
 
 
+
           var imgPhoto = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\" onclick=\"displayInfo(\'"+ item.id +"\', \'div"+ i.toString() +"\')\">"
           $("#dvImages").append(imgPhoto);
 
@@ -116,10 +117,11 @@ $(function(){
           })
           $("#dvImages").append("</br>");
 
-          var imgTable = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">"
-          // $("#affichage").append("<tr><td id='test'>test</td></tr>");
 
-          getInfo(item.id, imgTable);
+          var imgTxt = "<a class=\"fancybox\" rel='group' href=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\"><img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\"></a>";
+
+          getInfo(item.id, imgTxt);
+
 
           if (i == $("#listNumber").val()-1) return false;
       });
