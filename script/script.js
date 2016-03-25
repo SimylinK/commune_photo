@@ -1,11 +1,11 @@
-function displayInfo(photoID, divID) {
+function displayInfo(photoID) {
   $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
       photo_id:photoID
   }, function(data) {
-      $("#" + divID).html("Titre : " + data.photo.title._content + "</br>" +
+      $("#dialog-infoPhoto").html("Titre : " + data.photo.title._content + "</br>" +
         "Date : " + data.photo.dates.taken + "</br>" +
         "Photographe : " + data.photo.owner.realname)
-      $("#" + divID).dialog("open");
+      $("#dialog-infoPhoto").dialog("open");
   });
 }
 
@@ -28,7 +28,17 @@ $(function(){
   });
   $("#dialog-infoPhoto ").dialog({
     autoOpen: false,
-  })
+    modal: true,
+    resizable: true,
+    width: 400,
+    height: 300,
+    position: {
+        my: "left+25% top",
+        at: "left+25% top",
+        of: window,
+        collision: "none"
+      }
+  });
 
   $( "#datepicker" ).datepicker();
 
@@ -98,23 +108,10 @@ $(function(){
         var vide = true;
       $.each(data.photos.photo, function(i, item) {
           vide = false;
-          var img = $("<img/>");
 
-
-
-          var imgPhoto = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\" onclick=\"displayInfo(\'"+ item.id +"\', \'div"+ i.toString() +"\')\">"
+          var imgPhoto = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\"  onclick=\"displayInfo(\'"+ item.id +"\')\">"
           $("#dvImages").append(imgPhoto);
 
-          var div ="<div id=\"div"+i.toString()+"\"> Cédric est un PD</div>";
-          $("#dvImages").append(div);
-          $("#div" + i.toString()).dialog({
-            autoOpen: false,
-            height: 280,
-            width: 400,
-            modal: true,
-            dialogClass: 'dlgfixed',
-            position: "center",
-          })
           $("#dvImages").append("</br>");
 
 

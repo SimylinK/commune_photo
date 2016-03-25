@@ -85,7 +85,7 @@ fieldset {
   min-width:300px;
   margin-right:40px;
   float:left;
-    
+
 }
 
 legend {
@@ -115,4 +115,10 @@ label.light {
   text-align: center;
   text-shadow: 0 1px 0 rgba(255,255,255,0.2);
   border-radius: 100%;
+}
+
+
+.ui-dialog
+{
+position:fixed;
 }
