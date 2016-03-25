@@ -10,17 +10,23 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <form>
-      entrer une commune <input id="commune" type="text" name="commune">   <br/>
-      <select id="listNumber">
-      </select> <br/>
-
-      Photos prisent à partir d'une date :  <input type="checkbox" id="checkbox1"/>
-      <div id="autoUpdate" class="autoUpdate">
-        <p> Date: <input type="text" id="datepicker"></p>
-      </div>
-      <br/>
-      <input id="button" type="button" value="envoyer"/>
+    <form action="javascript:void(0);">
+        <fieldset>
+          <legend><span class="number">1</span>Information nécéssaire</legend>
+          <label>entrer une commune</label>
+          <input id="commune" type="text" name="commune">
+          <label>Nombre d'image souhaités</label><select id="listNumber"></select>
+        </fieldset>
+        <fieldset>
+          <legend><span class="number">2</span>Information complémentaire</legend>
+           <label>Photos prisent à partir d'une date : </label> <input type="checkbox" id="checkbox1"/>
+            <div id="autoUpdate" class="autoUpdate">
+             <label> Date:</label>  <br/><input type="text" id="datepicker">
+          
+          
+            </div>
+        </fieldset>
+      <button id="button" >Envoyer</button>
     </form>
 
       <div id="tabs">
