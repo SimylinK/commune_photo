@@ -93,10 +93,9 @@ $(function(){
 
 
           var imgTxt = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">"
-          // $("#affichage").append("<tr><td id='test'>test</td></tr>");
-
-
-          $("#affichage").append("<tr><td id='test'>"+imgTxt+"</td></tr>");
+          
+          getInfo(item.id, imgTxt);
+          
           if (i == $("#listNumber").val()-1) return false;
       });
       if (vide) $( "#dialog-noResult" ).dialog( "open" );
@@ -106,7 +105,7 @@ $(function(){
 
 
   function displayInfo(photoID) {
-    $.getJSON("https:/api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
         photo_id:photoID
     }, function(data) {
         $("#dialog-infoPhoto").html("Titre : " + data.photo.title._content + "</br>" +
@@ -115,9 +114,17 @@ $(function(){
         $("#dialog-infoPhoto").dialog("open");
     });
   }
-
-
-
-
-
+  
+  
+  function getInfo(photoID, imgTxt) {
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
+        photo_id:photoID
+    }, function(data) {
+          var info = "<td>Titre : " + data.photo.title._content + "</br>" +
+          "Date : " + data.photo.dates.taken + "</br>" +
+          "Photographe : " + data.photo.owner.realname+"</td>";
+          
+          $("#affichage").append("<tr><td>"+imgTxt+"</td>"+info+"</tr>");
+    });
+  }
 });
