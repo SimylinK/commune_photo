@@ -1,7 +1,7 @@
 $(function(){
 
   var sel = $('#listNumber');
-  for (i = 1; i<= 128; i++) {
+  for (var i = 1; i<= 128; i++) {
     sel.append($("<option>").attr('value',i).text(i));
   }
 
@@ -44,24 +44,21 @@ $(function(){
     });
   });
 */
-$('#commune').autocomplete({
-    minLength : 3,
+
+  $('#commune').autocomplete({
+    minLength : 2,
     source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
       $.ajax({
-        url : 'http://infoweb-ens/~jacquin-c/codePostal/codePostalComplete.php', // on appelle le script JSON
+        url : '../commune.php', // on appelle le script JSON
         dataType : 'json', // on spécifie bien que le type de données est en JSON
         data : {
-          commune : $('#commune').val() // on donne la chaîne de caractère tapée dans le champ de recherche
-
+          commune : $('#commune').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+          maxRows : 10
         },
         success : function(donnee){
           var past = "";
-          var index = 0;
           reponse( $.map( donnee, function( item ){
-            console.log(item.Ville+" "+past);
-            if (!(past.contains(item.Ville)) && index < 15) {
-              index ++
-              //alert(past);
+            if (item.Ville != past) {
               past = item.Ville;
               return item.Ville;
             }
@@ -83,6 +80,23 @@ $('#commune').autocomplete({
         text: $("#commune").val()
     }, function(data) {
 
+<<<<<<< HEAD
+      $("#dvImages").html("");
+      $.each(data.photos.photo, function(i, item) {
+          var img = $("<img/>");
+          img.attr('width', '400px');
+          img.attr('height', '250px');
+          img.attr("src", "https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg").appendTo("#dvImages");
+          
+            
+          var imgTxt = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">" 
+          // $("#affichage").append("<tr><td id='test'>test</td></tr>");
+          
+          
+          $("#affichage").append("<tr><td id='test'>"+imgTxt+"</td></tr>");
+          if (i == $("#listNumber").val()-1) return false;
+      });
+=======
         $("#dvImages").html("");
         var vide = true;
         $.each(data.photos.photo, function(i, item) {
@@ -95,6 +109,7 @@ $('#commune').autocomplete({
         });
         if (vide) $( "#dialog-noResult" ).dialog( "open" );
     });
+>>>>>>> 95b367c9798d35721a2fd5d370e8fc5f997de9ca
   });
 
 
