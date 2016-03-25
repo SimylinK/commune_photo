@@ -108,7 +108,7 @@ $('#commune').autocomplete({
           "Photographe : " + data.photo.owner.realname)
         $("#dialog-infoPhoto").dialog("open");
     });
-  });
+  }
 
 
 
