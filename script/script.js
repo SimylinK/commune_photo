@@ -92,7 +92,7 @@ $(function(){
           img.attr("src", "https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg").appendTo("#dvImages");
 
 
-          var imgTxt = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">"
+          var imgTxt = "<a class=\"fancybox\" rel='group' href=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\"><img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\"></a>";
           
           getInfo(item.id, imgTxt);
           
