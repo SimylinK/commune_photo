@@ -6,13 +6,22 @@
 
     <script type="text/javascript" src="script/script.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+
+    <meta charset="UTF-8">
   </head>
   <body>
     <form>
       entrer une commune <input id="commune" type="text" name="commune">   <br/>
       <select id="listNumber">
-      </select>
+      </select> <br/>
+
+      Photos prisent à partir d'une date :  <input type="checkbox" id="checkbox1"/>
+      <div id="autoUpdate" class="autoUpdate">
+        <p> Date: <input type="text" id="datepicker"></p>
+      </div>
+      <br/>
       <input id="button" type="button" value="envoyer"/>
+    </form>
 
       <div id="tabs">
         <ul>
@@ -30,7 +39,11 @@
       </div>
 
 
-    </form>
+
+
+    <!-- Les UI dialog-->
+    <div id="dialog-noResult" title="Fenêtre d'information"> Aucun résultat trouvé pour la recherche</div>
+    <div id="dialog-infoPhoto" title="Fenêtre d'information"> Aucun résultat trouvé pour la recherche</div>
 
   </body>
 </html>

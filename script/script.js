@@ -9,6 +9,22 @@ $(function(){
     $( "#tabs" ).tabs();
   });
 
+  //Dialod UI
+
+  $( "#dialog-noResult" ).dialog({
+    autoOpen: false,
+  });
+  $("#dialog-infoPhoto ").dialog({
+    autoOpen: false,
+  })
+
+  $( "#datepicker" ).datepicker();
+
+  $("#checkbox1").prop('checked', false);
+  $('#autoUpdate').fadeToggle();
+  $('#checkbox1').change(function () {
+    $('#autoUpdate').fadeToggle();
+  });
 
 /*  $("#button").on('click', function(){
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
@@ -53,13 +69,18 @@ $(function(){
   });
 
 
-$("#button").on('click', function(){
-  $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
-      sort:"relevance",
-      tags: $("#commune").val()
+  $("#button").on('click', function(){
+    var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1"
+    if ($("#checkbox1").is(':checked')) {
+      url += "&min_upload_date=" + $("#datepicker").val();
+    }
 
-  }, function(data) {
+    $.getJSON(url, {
+        sort:"relevance",
+        text: $("#commune").val()
+    }, function(data) {
 
+<<<<<<< HEAD
       $("#dvImages").html("");
       $.each(data.photos.photo, function(i, item) {
           var img = $("<img/>");
@@ -75,7 +96,37 @@ $("#button").on('click', function(){
           $("#affichage").append("<tr><td id='test'>"+imgTxt+"</td></tr>");
           if (i == $("#listNumber").val()-1) return false;
       });
+=======
+        $("#dvImages").html("");
+        var vide = true;
+        $.each(data.photos.photo, function(i, item) {
+          vide = false;
+            var img = $("<img/>");
+            img.attr('width', '400px');
+            img.attr('height', '250px');
+            img.attr("src", "https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg").appendTo("#dvImages");
+            if (i == $("#listNumber").val()-1) return false;
+        });
+        if (vide) $( "#dialog-noResult" ).dialog( "open" );
+    });
+>>>>>>> 95b367c9798d35721a2fd5d370e8fc5f997de9ca
   });
-});
+
+
+
+  function displayInfo(photoID) {
+    $.getJSON("https:/api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
+        photo_id:photoID
+    }, function(data) {
+        $("#dialog-infoPhoto").html("Titre : " + data.photo.title._content + "</br>" +
+          "Date : " + data.photo.dates.taken + "</br>" +
+          "Photographe : " + data.photo.owner.realname)
+        $("#dialog-infoPhoto").dialog("open");
+    });
+  });
+
+
+
+
 
 });
