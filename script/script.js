@@ -80,36 +80,26 @@ $(function(){
         text: $("#commune").val()
     }, function(data) {
 
-<<<<<<< HEAD
+
       $("#dvImages").html("");
+        var vide = true;
       $.each(data.photos.photo, function(i, item) {
+          vide = false;
           var img = $("<img/>");
           img.attr('width', '400px');
           img.attr('height', '250px');
           img.attr("src", "https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg").appendTo("#dvImages");
-          
-            
-          var imgTxt = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">" 
+
+
+          var imgTxt = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\">"
           // $("#affichage").append("<tr><td id='test'>test</td></tr>");
-          
-          
+
+
           $("#affichage").append("<tr><td id='test'>"+imgTxt+"</td></tr>");
           if (i == $("#listNumber").val()-1) return false;
       });
-=======
-        $("#dvImages").html("");
-        var vide = true;
-        $.each(data.photos.photo, function(i, item) {
-          vide = false;
-            var img = $("<img/>");
-            img.attr('width', '400px');
-            img.attr('height', '250px');
-            img.attr("src", "https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg").appendTo("#dvImages");
-            if (i == $("#listNumber").val()-1) return false;
-        });
-        if (vide) $( "#dialog-noResult" ).dialog( "open" );
+      if (vide) $( "#dialog-noResult" ).dialog( "open" );
     });
->>>>>>> 95b367c9798d35721a2fd5d370e8fc5f997de9ca
   });
 
 
