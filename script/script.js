@@ -1,7 +1,7 @@
 $(function(){
 
   var sel = $('#listNumber');
-  for (i = 1; i<= 20; i++) {
+  for (i = 1; i<= 128; i++) {
     sel.append($("<option>").attr('value',i).text(i));
   }
 
@@ -28,20 +28,27 @@ $(function(){
     });
   });
 */
-
-  $('#commune').autocomplete({
-    minLength : 2,
+$('#commune').autocomplete({
+    minLength : 3,
     source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
       $.ajax({
-        url : 'http://infoweb/~e146187z/commune.php', // on appelle le script JSON
+        url : 'http://infoweb-ens/~jacquin-c/codePostal/codePostalComplete.php', // on appelle le script JSON
         dataType : 'json', // on spécifie bien que le type de données est en JSON
         data : {
-          commune : $('#commune').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
-          maxRows : 10
+          commune : $('#commune').val() // on donne la chaîne de caractère tapée dans le champ de recherche
+
         },
         success : function(donnee){
+          var past = "";
+          var index = 0;
           reponse( $.map( donnee, function( item ){
-            return item.Ville;
+            console.log(item.Ville+" "+past);
+            if (!(past.contains(item.Ville)) && index < 15) {
+              index ++
+              //alert(past);
+              past = item.Ville;
+              return item.Ville;
+            }
           }) );
         }
       });
