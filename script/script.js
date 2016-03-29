@@ -132,7 +132,7 @@ $(function(){
 
 
   function getInfo(photoID, imgTxt) {
-    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=76dec8cfa6ca832032f96c4a4bfd7a24&format=json&nojsoncallback=1", {
         photo_id:photoID
     }, function(data) {
           var info = "<td>Titre : " + data.photo.title._content + "</br>" +

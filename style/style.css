@@ -15,7 +15,7 @@ body {
   color: #384047;
 }
 
-form {
+#form {
   padding: 10px 20px;
   background: #f4f7f8;
   border-radius: 8px;
@@ -88,6 +88,7 @@ fieldset {
   min-width:300px;
   margin-right:40px;
   float:left;
+  margin-left: 20px;
 
 }
 
@@ -107,8 +108,8 @@ label.light {
 }
 
 .number {
-  background-color: #5fcf80;
-  color: #fff;
+  background-color: #fff;
+  color: #5fcf80;
   height: 30px;
   width: 30px;
   display: inline-block;
