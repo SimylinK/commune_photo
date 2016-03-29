@@ -126,7 +126,7 @@ $(function(){
   });
 
 
-  $("#button").on('click', function(){
+  $("#icon").on('click', function(){
     var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=76dec8cfa6ca832032f96c4a4bfd7a24&format=json&nojsoncallback=1"
     if ($("#checkbox1").is(':checked')) {
       url += "&min_upload_date=" + $("#datepicker").val();
