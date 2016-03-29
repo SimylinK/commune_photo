@@ -9,6 +9,41 @@ function displayInfo(photoID) {
   });
 }
 
+function search() {
+  var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=76dec8cfa6ca832032f96c4a4bfd7a24&format=json&nojsoncallback=1"
+  if ($("#checkbox1").is(':checked')) {
+    url += "&min_upload_date=" + $("#datepicker").val();
+  }
+
+  $.getJSON(url, {
+      sort:"relevance",
+      text: $("#commune").val()
+  }, function(data) {
+
+
+    $("#dvImages").html("");
+    $("#affichage").html("");
+      var vide = true;
+    $.each(data.photos.photo, function(i, item) {
+        vide = false;
+
+        var imgPhoto = "<img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\"  onclick=\"displayInfo(\'"+ item.id +"\')\">"
+        $("#dvImages").append(imgPhoto);
+
+        $("#dvImages").append("</br>");
+
+
+        var imgTxt = "<a class=\"fancybox\" rel='group' href=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\"><img src=\"https://farm"+ item.farm +".staticflickr.com/"+ item.server +"/"+ item.id +"_"+ item.secret +".jpg\" height=\"250px\" width=\"400px\"></a>";
+
+        getInfo(item.id, imgTxt);
+
+
+        if (i == $("#listNumber").val()-1) return false;
+    });
+    if (vide) $( "#dialog-noResult" ).dialog( "open" );
+  });
+}
+
 
 $(function(){
 
@@ -132,7 +167,7 @@ $(function(){
 
 
   function getInfo(photoID, imgTxt) {
-    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=5149a64fa91469647a7511af9adf33a5&format=json&nojsoncallback=1", {
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=76dec8cfa6ca832032f96c4a4bfd7a24&format=json&nojsoncallback=1", {
         photo_id:photoID
     }, function(data) {
           var info = "<td>Titre : " + data.photo.title._content + "</br>" +
