@@ -15,10 +15,13 @@ body {
   color: #384047;
 }
 
-form {
+#form {
   padding: 10px 20px;
   background: #f4f7f8;
   border-radius: 8px;
+  margin:auto;
+  color:black;
+  min-height: 180px;
 }
 
 h1 {
@@ -63,7 +66,7 @@ select {
   border-radius: 2px;
 }
 
-button {
+#button {
   padding: 19px 39px 18px 39px;
   color: #FFF;
   background-color: #4bc970;
@@ -71,7 +74,7 @@ button {
   text-align: center;
   font-style: normal;
   border-radius: 5px;
-  width: 100%;
+  width: 300px;
   border: 1px solid #3ac162;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
@@ -85,11 +88,12 @@ fieldset {
   min-width:300px;
   margin-right:40px;
   float:left;
+  margin-left: 20px;
 
 }
 
 legend {
-  font-size: 1.4em;
+  font-size: 1em;
   margin-bottom: 10px;
 }
 
@@ -104,8 +108,8 @@ label.light {
 }
 
 .number {
-  background-color: #5fcf80;
-  color: #fff;
+  background-color: #fff;
+  color: #5fcf80;
   height: 30px;
   width: 30px;
   display: inline-block;
@@ -118,7 +122,13 @@ label.light {
 }
 
 
+
+.clear{
+    clear:both;
+}
+
 .ui-dialog
 {
 position:fixed;
 }
+
