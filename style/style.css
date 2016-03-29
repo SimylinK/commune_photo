@@ -132,3 +132,11 @@ label.light {
 position:fixed;
 }
 
+ .ui-icon {
+  color:#4bc970;
+  transition:0.5s;
+}
+
+a:hover .ui-icon{
+  color:#fff;
+}
