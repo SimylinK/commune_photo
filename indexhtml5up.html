@@ -26,6 +26,10 @@
 	    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 	    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+			<!--Pour DataTables -->
+			<link rel="stylesheet" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+			<script type="text/javascript" src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 	</head>
 	<body>
 
@@ -34,6 +38,7 @@
 				<header>
 					<h1>PROJECT commune_photo</h1>
 					<p>Par Brewal Henaff, Cédric Berland, Nathan Maraval</p>
+					<p>Mais surtout Nathan car il est très intelligent</p>
 				</header>
 				<footer>
 					<a href="#banner" class="button style2 scrolly-middle">Passer à la recherche</a>
@@ -69,7 +74,7 @@
 
 
 				<footer>
-					<a href="#resulttab" class="button style2 scrolly" id="icon"> Envoyer <span  class="ui-icon ui-icon-image" style="font-size: 8em;" > </span></a>
+					<a href="#resulttab" class="button style2 scrolly" id="icon"fo> Envoyer <span  class="ui-icon ui-icon-image" style="font-size: 8em;" > </span></a>
 
 				</footer>
 			</section>
@@ -82,7 +87,7 @@
 				</header>
 
 
-			      <div id="tabs">
+			      <div id="tabs" class="display" width="100%" cellspacing="0">
 			        <ul>
 			          <li><a href="#tabs-1">Vue photo</a></li>
 			          <li><a href="#tabs-2">Vue table</a></li>
@@ -91,15 +96,17 @@
 			          <div id="dvImages"> </div>
 			        </div>
 			        <div id="tabs-2">
-			          <table id="affichage">
 
-			          </table>
+
 			        </div>
 			      </div>
 
 
-			</article>
+			<!-- Les UI dialog-->
+			<div id="dialog-noResult" title="Fenêtre d'information"> Aucun résultat trouvé pour la recherche</div>
+			<div id="dialog-infoPhoto" title="Fenêtre d'information"> </div>
 
+			</article>
 
 
 
